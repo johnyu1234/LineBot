@@ -8,27 +8,88 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message
+from utils import send_text_message ,push_message ,send_image_carousel,send_button_message,send_button_carousel,send_image_url
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user","start", "laptop","high_game","mid_game","program","search_laptop","cpu","cpu_info","laptop_search"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "start",
+            "conditions": "is_going_to_start",
         },
         {
             "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "source": "start",
+            "dest": "cpu",
+            "conditions": "is_going_top_cpu_laptop", 
         },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+         {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "high_game",
+            "conditions": "is_going_to_high_game", 
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "program",
+            "conditions": "is_going_to_program", 
+        },
+         {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "mid_game",
+            "conditions": "is_going_to_mid_game", 
+        },
+
+         {
+            "trigger": "advance",
+            "source": "high_game",
+            "dest": "search_laptop",
+            "conditions": "is_going_to_search_laptop",# for the gaming laptops
+        },
+         {
+            "trigger": "advance",
+            "source": "mid_game",
+            "dest": "search_laptop",
+            "conditions": "is_going_to_search_laptop",# for the gaming laptops
+        },
+        {
+            "trigger": "advance",
+            "source": "program",
+            "dest": "search_laptop",
+            "conditions": "is_going_to_search_laptop",# for the gaming laptops
+        },
+         {
+            "trigger": "advance",
+            "source": "cpu",
+            "dest": "cpu_info",
+            "conditions": "is_going_cpu_info",
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "laptop",
+            "conditions": "is_going_to_find_laptop",
+        },
+         {
+            "trigger": "advance",
+            "source": "laptop",
+            "dest": "laptop_search",
+            "conditions": "is_going_to_laptop_search",
+        },
+        {"trigger": "go_back",
+         "source": ["laptop","state3"],
+          "dest": "user"},
+        {"trigger": "go_laptop",
+         "source": ["laptop_search"],
+          "dest": "laptop"},
+         
     ],
     initial="user",
     auto_transitions=False,
@@ -49,6 +110,8 @@ if channel_access_token is None:
     sys.exit(1)
 
 line_bot_api = LineBotApi(channel_access_token)
+#print(channel_access_token)
+print(channel_secret)
 parser = WebhookParser(channel_secret)
 
 @app.route("/callback", methods=["POST"])
@@ -84,6 +147,7 @@ def webhook_handler():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info(f"Request body: {body}")
+
 
     # parse webhook body
     try:
