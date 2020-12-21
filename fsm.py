@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message ,push_message, send_image_carousel,send_button_message,send_button_carousel,send_image_url
+from utils import send_text_message ,push_message, send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget
 import requests 
 from bs4 import BeautifulSoup
 import csv
@@ -13,6 +13,8 @@ class TocMachine(GraphMachine):
     def is_going_to_start(self, event):
         text = event.message.text
         return True
+
+# first carusol
     def is_going_to_find_laptop(self, event):
         text = event.message.text
         return text.lower() == "search laptop"
@@ -20,10 +22,27 @@ class TocMachine(GraphMachine):
         return True
     def is_going_to_search_laptop(self,event):
         return True
+    def is_going_budget(self,event):
+        text = event.message.text
+        return text.lower() =="budget"
+    def is_going_range(self,event):
+        return True
+    def is_going_to_fsm(self,event):
+        text = event.message.text
+        return text.lower() =="fsm"
+# second carosel
     def is_going_top_cpu_laptop(self,event):
         text = event.message.text
         #print("entering cpu")
         return text.lower() == "top laptop cpu"
+    def is_going_top_gpu_laptop(self,event):
+        text = event.message.text
+        #print("entering gpu")
+        return text.lower() == "top gpu for laptop"
+
+
+
+# last carusol
     def is_going_to_high_game(self,event):
         text = event.message.text
         return text.lower() == "high game"
@@ -38,6 +57,56 @@ class TocMachine(GraphMachine):
 
     def is_going_to_laptop_search(self,event):
         return True
+    def is_going_back(self,event):
+        text = event.message.text
+        return text.lower() == "return"
+    def on_enter_fsm(self,event):
+        reply_token = event.reply_token
+    def on_enter_range(self,event):
+        text=event.message.text
+        arr=list()
+        if(text=="<$700"):
+            arr=["Best Business Laptop:","Lenovo ThinkPad E15","Best Overall:","Acer Swift 3 (SF314-42)","Best for Student:","ASUS ZenBook 14 UM433"]
+        elif(text=="<$500"):
+            arr=["Newest Model:","Dell Inspiron 15 3593","Best Overall:","Acer Aspire 3 (A317-51G)","Value for Money:","Acer Aspire 5 (A515-56G)"]
+        elif(text=="<$300"):
+            arr=["14-inch Laptop:","Lenovo Ideapad 110 (15″)","15-inch Laptop:","Asus VivoBook 15 L510MA-DB02","Touchscreen:","Lenovo Chromebook S330 (14″)"]
+        string = "\n".join(arr)
+        reply_token = event.reply_token
+        send_text_message(reply_token, string)
+        userid = event.source.user_id
+        push_message(userid,"Please enter search laptop")
+    def on_enter_budget(self,event):
+        userid = event.source.user_id
+        send_button_budget(userid)
+    def on_enter_gpu(self,event):
+        url = "https://laptopmedia.com/top-laptop-graphics-ranking/"
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        rows = soup.find("table", {"class": "table-style-4 rate_table"})
+        rows = rows.tbody.find_all("tr")
+        row_list = list()
+        i = 0
+        for tr in rows[6:]:
+            if (i == 14):
+                break
+            th = tr.find_all('a')
+            row = [i.text for i in th]
+            row = [i.replace('\xa0', "") for i in row]
+            row = [i.replace('...', "") for i in row]
+            row = [i.replace('  ', "") for i in row]
+            row_list.append(row)
+            i += 1
+        t = 1
+        labels = list()
+        text = list()
+        for i in range(len(row_list)):
+            if (i % 2 == 0):
+                text.append(str(t)+": "+row_list[i][1]+" "+row_list[i][2])
+                t+=1
+        string = "\n".join(text)
+        reply_token = event.reply_token
+        send_text_message(reply_token, string)
     def on_enter_start(self,event):
         userid = event.source.user_id
         send_button_carousel(userid)
@@ -163,7 +232,6 @@ class TocMachine(GraphMachine):
         for i in range(len(row_list)):
         
             if(i%2==0):
-                labels.append(row_list[i][1])
                 text.append(row_list[i][1])
         one = 'https://sunfar.blob.core.windows.net/webimage/jpg360/251/251454YF10.jpg'
         two = 'https://static.techspot.com/images/products/2018/processors/intel/org/2018-10-19-product.jpg'

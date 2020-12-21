@@ -8,13 +8,13 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message ,push_message ,send_image_carousel,send_button_message,send_button_carousel,send_image_url
+from utils import send_text_message ,push_message ,send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user","start", "laptop","high_game","mid_game","program","search_laptop","cpu","cpu_info","laptop_search"],
+    states=["user","start","budget","fsm","range","laptop","high_game","mid_game","program","search_laptop","gpu","cpu","cpu_info","laptop_search"],
     transitions=[
         {
             "trigger": "advance",
@@ -27,6 +27,30 @@ machine = TocMachine(
             "source": "start",
             "dest": "cpu",
             "conditions": "is_going_top_cpu_laptop", 
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "budget",
+            "conditions": "is_going_budget", 
+        },
+        {
+            "trigger": "advance",
+            "source": "budget",
+            "dest": "range",
+            "conditions": "is_going_range", 
+        },
+        {
+            "trigger": "advance",
+            "source": "range",
+            "dest": "laptop",
+            "conditions": "is_going_to_find_laptop", #have to go another state 
+        },
+         {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "gpu",
+            "conditions": "is_going_top_gpu_laptop", 
         },
          {
             "trigger": "advance",
@@ -49,22 +73,11 @@ machine = TocMachine(
 
          {
             "trigger": "advance",
-            "source": "high_game",
+            "source": ["mid_game","high_game","program"],
             "dest": "search_laptop",
             "conditions": "is_going_to_search_laptop",# for the gaming laptops
         },
-         {
-            "trigger": "advance",
-            "source": "mid_game",
-            "dest": "search_laptop",
-            "conditions": "is_going_to_search_laptop",# for the gaming laptops
-        },
-        {
-            "trigger": "advance",
-            "source": "program",
-            "dest": "search_laptop",
-            "conditions": "is_going_to_search_laptop",# for the gaming laptops
-        },
+     
          {
             "trigger": "advance",
             "source": "cpu",
@@ -82,6 +95,18 @@ machine = TocMachine(
             "source": "laptop",
             "dest": "laptop_search",
             "conditions": "is_going_to_laptop_search",
+        },
+         {
+            "trigger": "advance",
+            "source": ["laptop_search","cpu_info","gpu","search_laptop"],
+            "dest": "start",
+            "conditions": "is_going_back",
+        },
+         {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "fsm",
+            "conditions": "is_going_to_fsm",
         },
         {"trigger": "go_back",
          "source": ["laptop","state3"],

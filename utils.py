@@ -58,6 +58,37 @@ def send_button_message(id, img, title, uptext, labels, texts):
     )
     line_bot_api.push_message(id, message)
     return "OK"
+def send_button_budget(id):
+    line_bot_api = LineBotApi(channel_access_token)
+    message = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://www.reviewsontop.com/wp-content/uploads/2020/03/X5TyA8uvkGXoNyjFzxcowS-1200-80.jpg',
+                    title='New to buying your own laptop?',
+                    text='click here to find the right one',
+                    actions=[
+                        MessageTemplateAction(
+                            label=' < $700',
+                            text='<$700'
+                        ),
+                        MessageTemplateAction(
+                            label=' < $500',
+                            text='<$500'
+                        ),
+                        MessageTemplateAction(
+                            label=' < $300',
+                            text='<$300'
+                        )
+                    ]
+                )
+            ]
+        )
+    )
+    line_bot_api.push_message(id, message)
+
+    return "OK"
 def send_button_carousel(id):
     line_bot_api = LineBotApi(channel_access_token)
     message = TemplateSendMessage(
@@ -74,12 +105,12 @@ def send_button_carousel(id):
                             text='search laptop'
                         ),
                         MessageTemplateAction(
-                            label='Standings',
-                            text='show standing'
+                            label='Budget',
+                            text='budget'
                         ),
                         MessageTemplateAction(
-                            label='Game Schedule',
-                            text='show schedule'
+                            label='FSM',
+                            text='fsm'
                         )
                     ]
                 ),
@@ -93,8 +124,8 @@ def send_button_carousel(id):
                             text='top laptop cpu'
                         ),
                         MessageTemplateAction(
-                            label='Game Result',
-                            text='game box score'
+                            label='Top 7 Laptop GPU',
+                            text='top gpu for laptop'
                         ),
                         MessageTemplateAction(
                             label='Search Player',
