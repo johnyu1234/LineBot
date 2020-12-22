@@ -151,6 +151,25 @@ def send_button_carousel(id):
                             text='program'
                         )
                     ]
+                ),
+                  CarouselColumn(
+                    thumbnail_image_url='https://www.reviewsontop.com/wp-content/uploads/2020/03/X5TyA8uvkGXoNyjFzxcowS-1200-80.jpg',
+                    title='Shopping for Laptop',
+                    text='Choose a Site to begin',
+                    actions=[
+                        MessageTemplateAction(
+                            label='Pchome',
+                            text='high game'
+                        ),
+                        MessageTemplateAction(
+                            label='CoolPc',
+                            text='mid game'
+                        ),
+                        MessageTemplateAction(
+                            label='Apple',
+                            text='program'
+                        )
+                    ]
                 )
             ]
         )
