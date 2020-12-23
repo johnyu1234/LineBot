@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message ,push_message, send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget
+from utils import send_text_message ,push_message, send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget,send_video_url
 import requests 
 from bs4 import BeautifulSoup
 import csv
@@ -39,10 +39,13 @@ class TocMachine(GraphMachine):
         text = event.message.text
         #print("entering gpu")
         return text.lower() == "top gpu for laptop"
+    def is_going_to_cgpu_review(self,event):
+        text = event.message.text
+        return text.lower() =="cgpu_review"
 
 
 
-# last carusol
+# third carusol
     def is_going_to_high_game(self,event):
         text = event.message.text
         return text.lower() == "high game"
@@ -57,11 +60,81 @@ class TocMachine(GraphMachine):
 
     def is_going_to_laptop_search(self,event):
         return True
+    def is_going_to_requirement(self,event):
+        text = event.message.text
+        return text.lower() == "requirement"
     def is_going_back(self,event):
         text = event.message.text
         return text.lower() == "return"
+    def is_going_to_games(self,event):
+        return True
+    #last carosel
+    def is_going_to_coolpc(self,event):
+        text = event.message.text
+        return text.lower() =="coolpc_link"
+    def is_going_to_apple(self,event):
+        text = event.message.text
+        return text.lower() =="apple_link"
+    def is_going_to_pchome(self,event): 
+        text = event.message.text
+        return text.lower() =="pchome_link"  
+    def on_enter_show_games(self,event):
+        text = event.message.text
+        reply_token = event.reply_token
+        url = "https://www.intel.com/content/www/us/en/gaming/resources/system-requirements.html"
+        page = requests.get(url)
+
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        rows = soup.findAll("div", {"class": "editorialtable section"})
+
+        row_ler=[y.text for y in rows]
+        row_ler =[i.replace('\n\n',"")for i in row_ler]
+        if(text=="0"):
+            send_text_message(reply_token,row_ler[0][:-28])
+        elif(text=="1"):
+            send_text_message(reply_token,row_ler[1][:-28])
+        elif(text=="2"):
+            send_text_message(reply_token,row_ler[2][:-28])
+        elif(text=="3"):
+            send_text_message(reply_token,row_ler[3][:-28])
+        elif(text=="4"):
+            send_text_message(reply_token,row_ler[4][:-28])
+    def on_enter_requirement(self,event):
+        reply_token = event.reply_token
+        one = 'https://steamcdn-a.akamaihd.net/steam/apps/1091500/header.jpg?t=1608552868'
+        two = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/1280px-MarvelLogo.svg.png'
+        three = 'https://image.api.playstation.com/cdn/HP9000/CUSA05682_00/1J6HqFz7q5jR0bS1poj3oYbQ9veI64NgpGHo36qeC4CfwrLjikjQYONSqBtwXwiU.png'
+        four = 'https://www.riotgames.com/darkroom/1370/d0807e131a84f2e42c7a303bda672789:a0e5fc336a003f2987ce613812fbf9f4/valorant-offwhitelaunch-keyart.jpg'
+        five = 'https://cdn-wp.thesportsrush.com/2020/09/cod-warzopne.jpg'
+        urls = [one, two, three, four, five]
+        labels=["Cyber","Marvel","Horizon","Valorant","COD"]
+        text =["0","1","2","3","4"]
+        #print(len(urls))
+        #print(labels)
+        userid = event.source.user_id
+        send_image_carousel(userid, urls, labels, text)
+        msg = "Choose One"
+        push_message(userid, msg)
+    def on_enter_cgpu_review(self,event):
+        reply_token = event.reply_token
+        userid = event.source.user_id
+        push_message(userid,"CPU")
+        send_text_message(reply_token,"https://www.youtube.com/watch?v=VDZQCcDMcfw")
+        push_message(userid,"GPU")
+        push_message(userid,"https://www.youtube.com/watch?v=CoDPTJ-3qCM")
+    def on_enter_coolpc(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "http://www.coolpc.com.tw/evaluate.php")
+    def on_enter_apple(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "https://www.apple.com/tw/?afid=p238%7CsdGAPHwnZ-dc_mtid_18707vxu38484_pcrid_486296301760_pgrid_12618487742_&cid=aos-tw-kwgo-brand--slid---product--")
+    def on_enter_pchome(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "https://24h.pchome.com.tw/region/DHAA")
     def on_enter_fsm(self,event):
         reply_token = event.reply_token
+        send_image_url(reply_token,"https://raw.githubusercontent.com/johnyu1234/LineBot/master/fsm.png")
     def on_enter_range(self,event):
         text=event.message.text
         arr=list()

@@ -8,19 +8,43 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message ,push_message ,send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget
+from utils import send_text_message ,push_message ,send_image_carousel,send_button_message,send_button_carousel,send_image_url,send_button_budget,send_video_url
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user","start","budget","fsm","range","laptop","high_game","mid_game","program","search_laptop","gpu","cpu","cpu_info","laptop_search"],
+    states=["user","start","requirement","show_games","budget","fsm","range","laptop","high_game","mid_game","cgpu_review","program","search_laptop","apple","coolpc","pchome","gpu","cpu","cpu_info","laptop_search"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
             "dest": "start",
             "conditions": "is_going_to_start",
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "apple",
+            "conditions": "is_going_to_apple",
+        },
+         {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "cgpu_review",
+            "conditions": "is_going_to_cgpu_review",
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "pchome",
+            "conditions": "is_going_to_pchome",
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "coolpc",
+            "conditions": "is_going_to_coolpc",
         },
         {
             "trigger": "advance",
@@ -57,6 +81,18 @@ machine = TocMachine(
             "source": "start",
             "dest": "high_game",
             "conditions": "is_going_to_high_game", 
+        },
+        {
+            "trigger": "advance",
+            "source": "search_laptop",
+            "dest": "requirement",
+            "conditions": "is_going_to_requirement", 
+        },
+        {
+            "trigger": "advance",
+            "source": "requirement",
+            "dest": "show_games",
+            "conditions": "is_going_to_games", 
         },
         {
             "trigger": "advance",
@@ -98,7 +134,7 @@ machine = TocMachine(
         },
          {
             "trigger": "advance",
-            "source": ["laptop_search","cpu_info","gpu","search_laptop"],
+            "source": ["laptop_search","requirement","cpu_info","gpu","search_laptop","pchome","apple","coolpc"],
             "dest": "start",
             "conditions": "is_going_back",
         },

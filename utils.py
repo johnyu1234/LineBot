@@ -128,8 +128,8 @@ def send_button_carousel(id):
                             text='top gpu for laptop'
                         ),
                         MessageTemplateAction(
-                            label='Search Player',
-                            text='search player'
+                            label='Latest V.Review',
+                            text='cgpu_review'
                         ),
                     ]
                 ),
@@ -159,15 +159,15 @@ def send_button_carousel(id):
                     actions=[
                         MessageTemplateAction(
                             label='Pchome',
-                            text='high game'
+                            text='pchome_link'
                         ),
                         MessageTemplateAction(
                             label='CoolPc',
-                            text='mid game'
+                            text='coolpc_link'
                         ),
                         MessageTemplateAction(
                             label='Apple',
-                            text='program'
+                            text='apple_link'
                         )
                     ]
                 )
@@ -184,6 +184,15 @@ def send_image_url(id, img_url):
         preview_image_url=img_url
         )
     line_bot_api.reply_message(id, message)
+
+    return "OK"
+def send_video_url(id,video,image):
+    line_bot_api = LineBotApi(channel_access_token)
+    message = ImageSendMessage(
+        original_content_url=video,
+        preview_image_url=image
+        )
+    line_bot_api.push_message(id, message)
 
     return "OK"
 """
