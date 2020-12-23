@@ -134,7 +134,7 @@ machine = TocMachine(
         },
          {
             "trigger": "advance",
-            "source": ["laptop_search","requirement","cpu_info","gpu","search_laptop","pchome","apple","coolpc"],
+            "source": ["laptop_search","show_games","requirement","cpu_info","gpu","search_laptop","pchome","apple","coolpc"],
             "dest": "start",
             "conditions": "is_going_back",
         },
