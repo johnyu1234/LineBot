@@ -42,7 +42,12 @@ class TocMachine(GraphMachine):
     def is_going_to_cgpu_review(self,event):
         text = event.message.text
         return text.lower() =="cgpu_review"
-
+    def is_going_to_cpu_review(self,event):
+        text = event.message.text
+        return text.lower() =="cpu"
+    def is_going_to_gpu_review(self,event):
+        text = event.message.text
+        return text.lower() =="gpu"
 
 
 # third carusol
@@ -123,6 +128,18 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token,"https://www.youtube.com/watch?v=VDZQCcDMcfw")
         push_message(userid,"GPU")
         push_message(userid,"https://www.youtube.com/watch?v=CoDPTJ-3qCM")
+        push_message(userid,"for more type CPU or GPU")
+    def on_enter_gpu_review(self,event):
+        reply_token = event.reply_token
+        userid = event.source.user_id
+        send_text_message(reply_token,"https://www.youtube.com/watch?v=Vocmo6-wa9E")
+        push_message(userid,"https://www.youtube.com/watch?v=AihX9OjqnYc")
+
+    def on_enter_cpu_review(self,event):
+        reply_token = event.reply_token
+        userid = event.source.user_id
+        push_message(userid,"https://www.youtube.com/watch?v=xJNkEzy3-O4")
+        send_text_message(reply_token,"https://www.youtube.com/watch?v=JgoxUrCc_Ck")
     def on_enter_coolpc(self,event):
         reply_token = event.reply_token
         send_text_message(reply_token, "http://www.coolpc.com.tw/evaluate.php")
