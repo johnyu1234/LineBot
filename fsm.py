@@ -89,7 +89,7 @@ class TocMachine(GraphMachine):
     def on_enter_pro_con(self,event):
         global laptop
         page = requests.get(laptop)
-        print(laptop)
+        #print(laptop)
         userid = event.source.user_id
         reply_token = event.reply_token
         soup = BeautifulSoup(page.content, 'html.parser')
@@ -100,8 +100,8 @@ class TocMachine(GraphMachine):
             cons = cons.find_all("li")
             pros=[y.text for y in pros]
             cons=[y.text for y in cons]
-            print(pros)
-            print(cons)
+            #print(pros)
+            #print(cons)
             string = "Pros:\n"
             string += "\n".join(pros)
             string_2 = "Cons:\n"
@@ -271,8 +271,8 @@ class TocMachine(GraphMachine):
         urls = [one, two, three, four, five]
         labels=["Razer","Asus","Alienware","Msi","Acer"]
         text =["Razer Blade 15 (2020)","ASUS ROG SCAR Edition (GL503VS)","Alienware m17 R3","MSI GS65 Stealh Thin","Acer Predator Helios 300"]
-        print(len(urls))
-        print(labels)
+        #print(len(urls))
+        #print(labels)
         userid = event.source.user_id
         send_image_carousel(userid, urls, labels, text)
         msg = "Choose One"
@@ -296,7 +296,7 @@ class TocMachine(GraphMachine):
             send_text_message(reply_token, string)
 
     def on_enter_laptop(self, event):
-        print("I'm entering laptop")
+        #print("I'm entering laptop")
         reply_token = event.reply_token
         send_text_message(reply_token, "Please Select Laptop")
     def on_enter_cpu_info(self,event):
@@ -359,9 +359,9 @@ class TocMachine(GraphMachine):
         five = 'https://images.versus.io/objects/amd-ryzen-9-4900hs.front.medium.1587585924969.webp'
         urls = [one, two, three, four, five]
         labels=["Intel","Intel","Intel","AMD","AMD"]
-        print(len(urls))
-        print(labels)
-        print(text)
+        #print(len(urls))
+        #print(labels)
+        #print(text)
         userid = event.source.user_id
         send_image_carousel(userid, urls, labels, text)
         msg = "Press click on any CPU for more info"
