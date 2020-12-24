@@ -367,12 +367,14 @@ class TocMachine(GraphMachine):
         msg = "Press click on any CPU for more info"
         push_message(userid, msg)
     def on_enter_laptop_search(self,event):
+        
         text = event.message.text.lower()
         reply_token = event.reply_token
         text = text.replace(" ", "-")
         url = "https://laptopmedia.com/series/"+text+"/"
         page =requests.get(url)
         userid = event.source.user_id
+        push_message(userid,"Please wait...")
         if(page.status_code==200):
             #print("true")
             soup = BeautifulSoup(page.content,'html.parser')
