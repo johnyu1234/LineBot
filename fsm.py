@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import os.path
-
+laptop =""
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -65,6 +65,9 @@ class TocMachine(GraphMachine):
 
     def is_going_to_laptop_search(self,event):
         return True
+    def is_going_to_pro_con(self,event):
+        text = event.message.text
+        return text.lower() == "more"
     def is_going_to_requirement(self,event):
         text = event.message.text
         return text.lower() == "requirement"
@@ -83,6 +86,32 @@ class TocMachine(GraphMachine):
     def is_going_to_pchome(self,event): 
         text = event.message.text
         return text.lower() =="pchome_link"  
+    def on_enter_pro_con(self,event):
+        global laptop
+        page = requests.get(laptop)
+        print(laptop)
+        userid = event.source.user_id
+        reply_token = event.reply_token
+        soup = BeautifulSoup(page.content, 'html.parser')
+        pros = soup.find("div", {"class": "color-green plus-wrapper col-sm-6 col-xs-12"})
+        if pros:
+            pros = pros.find_all("li")
+            cons = soup.find("div", {"class": "color-red minus-wrapper col-sm-6 col-xs-12"})
+            cons = cons.find_all("li")
+            pros=[y.text for y in pros]
+            cons=[y.text for y in cons]
+            print(pros)
+            print(cons)
+            string = "Pros:\n"
+            string += "\n".join(pros)
+            string_2 = "Cons:\n"
+            string_2 += "\n".join(cons)
+            send_text_message(reply_token,string)
+            push_message(userid, string_2)
+        else:
+            send_text_message(reply_token,"No one has reviewed on this model")
+
+        
     def on_enter_show_games(self,event):
         text = event.message.text
         reply_token = event.reply_token
@@ -366,6 +395,9 @@ class TocMachine(GraphMachine):
            # print(string)
             send_image_url(reply_token,hello)
             push_message(userid,string)
+            push_message(userid,"enter more for Pros and Cons")
+            global laptop
+            laptop = new
         else:
            # print("false")
             push_message(userid,"laptop doesn't exists,please try again")

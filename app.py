@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user","start","requirement","show_games","budget","fsm","range","laptop","high_game","mid_game","cgpu_review","cpu_review","gpu_review","program","search_laptop","apple","coolpc","pchome","gpu","cpu","cpu_info","laptop_search"],
+    states=["user","start","requirement","show_games","pro_con","budget","fsm","range","laptop","high_game","mid_game","cgpu_review","cpu_review","gpu_review","program","search_laptop","apple","coolpc","pchome","gpu","cpu","cpu_info","laptop_search"],
     transitions=[
         {
             "trigger": "advance",
@@ -146,7 +146,13 @@ machine = TocMachine(
         },
          {
             "trigger": "advance",
-            "source": ["laptop_search","show_games","fsm","requirement","cpu_review","gpu_review","cpu_info","gpu","search_laptop","pchome","apple","coolpc"],
+            "source": "laptop_search",
+            "dest": "pro_con",
+            "conditions": "is_going_to_pro_con",
+        },
+         {
+            "trigger": "advance",
+            "source": ["laptop_search","show_games","pro_con","fsm","requirement","cpu_review","gpu_review","cpu_info","gpu","search_laptop","pchome","apple","coolpc"],
             "dest": "start",
             "conditions": "is_going_back",
         },
