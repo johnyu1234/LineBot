@@ -5,8 +5,8 @@
 
 
 ## Method
-**I have used python's webscraping method(BeautifulSoup) to webscrape all of my data for this project
-**there are several websites that i have used and their links will be down below in the reference section
+*  I have used python's webscraping method(BeautifulSoup) to webscrape all of my data for this project
+*  there are several websites that i have used and their links will be down below in the reference section
 
 ## Features
 
