@@ -43,21 +43,6 @@ Otherwise, you might not be able to run your code.
 #### Run Locally
 You can either setup https server or using `ngrok` as a proxy.
 
-#### a. Ngrok installation
-* [ macOS, Windows, Linux](https://ngrok.com/download)
-
-or you can use Homebrew (MAC)
-```sh
-brew cask install ngrok
-```
-
-**`ngrok` would be used in the following instruction**
-
-```sh
-ngrok http 8000
-```
-
-After that, `ngrok` would generate a https URL.
 
 #### Run the sever
 
