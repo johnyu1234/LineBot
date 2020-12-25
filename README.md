@@ -3,6 +3,11 @@
 ## Finite State Machine
 ![fsm](https://github.com/johnyu1234/LineBot/blob/master/fsm.png)
 
+
+## Method
+I have used python's webscraping method(BeautifulSoup) to webscrape all of my data for this project
+there are several websites that i have used and their links will be down below in the reference section
+
 ## Features
 
 ### Initial interface
@@ -46,20 +51,29 @@ Just allow user to see the fsm for my linechatbot
     <img src="img/features/standings.jpg" width="240" height="340">
 </p>
 
-### Game Schedule
-Showing the game schedule tomorrow.
+### CPU/GPU
+There will be 3 different options
+1) Top 5 CPU chips in laptops
+2) Top 7 GPU chips in laptops
+3) Latest Video Review on CPU and GPU in Youtube
 <p align=center>
     <img src="img/features/schedule.jpg" width="240" height="340">
 </p>
 
-### Stat Leader
-Showing the stat leaders. (Most Points / Assist / Rebound / 3PM / Steal / Block)
+### First timer
+Instead of choosing your own laptop
+click on some selections made by top reviwers
+1) high-end gaming
+2) mid-end gaming
+3) good for programming
+each of them will show 5 different laptops ranging from asus,apple,dell and many other more
+it will list down their specs 
 <p align=center>
     <img src="img/features/statleader.jpg" width="240" height="340">
 </p>
 
-### Game Result
-Checking out the box score of a specific game. (Manually input date and team)
+### Shopping
+Showcase some of the wellknown websites to purchase laptops or electronical devices
 <p align=center>
     <img src="img/features/result.jpg" width="240" height="340">
 </p>
