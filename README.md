@@ -5,8 +5,8 @@
 
 ## Features
 
-### Watch Games
-Checking out all the scores of the games on that day. (Today / Yesterday / Manually input date)
+### Initial interface
+There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Shopping for Laptop
 <p align=center>
     <img src="img/features/game1.jpg" width="240" height="340">
 </p>
@@ -14,8 +14,10 @@ Checking out all the scores of the games on that day. (Today / Yesterday / Manua
     <img src="img/features/game2.jpg" width="240" height="340">
 </p>
 
-### Search Player
-Searching for a specific player. (Manually input player name)
+### Laptop
+#### Search for a specific laptop 
+just key in any laptop in the market currently
+it will show its specs and pros and cons
 <p align=center>
     <img src="img/features/player1.jpg" width="240" height="340">
 </p>
@@ -26,8 +28,11 @@ Searching for a specific player. (Manually input player name)
     <img src="img/features/player3.jpg" width="240" height="340">
 </p>
 
-### Search Team
-Searching for a specific team. (Manually input team name)
+#### Budget
+There will be 3 different budget friendly prices to choose from
+< $700USD
+< $500USD
+< $300USD
 <p align=center>
     <img src="img/features/team1.jpg" width="240" height="340">
 </p>
@@ -35,8 +40,8 @@ Searching for a specific team. (Manually input team name)
     <img src="img/features/team2.jpg" width="240" height="340">
 </p>
 
-### Standings
-Showing the team standing from both Eastern and Western conference.
+#### FSM
+Just allow user to see the fsm for my linechatbot
 <p align=center>
     <img src="img/features/standings.jpg" width="240" height="340">
 </p>
