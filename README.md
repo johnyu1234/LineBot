@@ -13,19 +13,15 @@
 ### Initial interface
 There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Shopping for Laptop
 <p align=center>
-    <img src="img/features/game1.jpg" width="240" height="340">
+    <img src="img/search_laptop.jpg" width="240" height="340">
 </p>
 <p align=center>
-    <img src="img/features/game2.jpg" width="240" height="340">
+    <img src="img/cpu.jpg" width="240" height="340">
 </p>
-
 ### Laptop
 #### Search for a specific laptop 
 just key in any laptop in the market currently
 it will show its specs and pros and cons
-<p align=center>
-    <img src="img/search_laptop.jpg" width="240" height="340">
-</p>
 <p align=center>
     <img src="img/dell_inspiron_5570.jpg" width="240" height="340">
 </p>
@@ -56,9 +52,7 @@ There will be 3 different options
 1) Top 5 CPU chips in laptops
 2) Top 7 GPU chips in laptops
 3) Latest Video Review on CPU and GPU in Youtube
-<p align=center>
-    <img src="img/cpu.jpg" width="240" height="340">
-</p>
+
 <p align=center>
     <img src="img/cpu_show.jpg" width="240" height="340">
 </p>
