@@ -22,8 +22,8 @@ There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Sh
     <img src="img/tier.jpg" width="240" height="340">
 </p>
 #### Search for a specific laptop 
-just key in any laptop in the market currently
-it will show its specs and pros and cons
+* just key in any laptop in the market currently
+* it will show its specs and pros and cons
 <p align=center>
     <img src="img/dell_inspiron_5570.jpg" width="240" height="340">
 </p>
