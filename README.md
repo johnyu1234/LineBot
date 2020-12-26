@@ -18,6 +18,9 @@ There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Sh
 <p align=center>
     <img src="img/cpu.jpg" width="240" height="340">
 </p>
+<p align=center>
+    <img src="img/tier.jpg" width="240" height="340">
+</p>
 ### Laptop
 #### Search for a specific laptop 
 just key in any laptop in the market currently
@@ -63,13 +66,16 @@ There will be 3 different options
 ### First timer
 Instead of choosing your own laptop
 click on some selections made by top reviwers
-1) high-end gaming
-2) mid-end gaming
-3) good for programming
+* high-end gaming
+* mid-end gaming
+* good for programming
 each of them will show 5 different laptops ranging from asus,apple,dell and many other more
 it will list down their specs 
 <p align=center>
-    <img src="img/features/statleader.jpg" width="240" height="340">
+    <img src="img/high_tier.jpg" width="240" height="340">
+</p>
+<p align=center>
+    <img src="img/high_tier_1.jpg" width="240" height="340">
 </p>
 
 ### Shopping
