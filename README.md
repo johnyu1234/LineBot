@@ -49,9 +49,10 @@ Just allow user to see the fsm for my linechatbot
 
 ### CPU/GPU
 There will be 3 different options
-1) Top 5 CPU chips in laptops
-2) Top 7 GPU chips in laptops
-3) Latest Video Review on CPU and GPU in Youtube
+
+* Top 5 CPU chips in laptops
+* Top 7 GPU chips in laptops
+* Latest Video Review on CPU and GPU in Youtube
 
 <p align=center>
     <img src="img/cpu_show.jpg" width="240" height="340">
