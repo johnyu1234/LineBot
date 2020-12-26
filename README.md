@@ -71,8 +71,9 @@ click on some selections made by top reviwers
 * high-end gaming
 * mid-end gaming
 * good for programming
-each of them will show 5 different laptops ranging from asus,apple,dell and many other more
-it will list down their specs 
+
+* each of them will show 5 different laptops ranging from asus,apple,dell and many other more
+* it will list down their specs 
 <p align=center>
     <img src="img/high_tier.jpg" width="240" height="340">
 </p>
