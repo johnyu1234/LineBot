@@ -75,7 +75,7 @@ it will list down their specs
 ### Shopping
 Showcase some of the wellknown websites to purchase laptops or electronical devices
 <p align=center>
-    <img src="img/features/result.jpg" width="240" height="340">
+    <img src="img/site.jpg" width="240" height="340">
 </p>
 
 
