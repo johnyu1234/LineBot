@@ -87,3 +87,7 @@ Showcase some of the wellknown websites to purchase laptops or electronical devi
 Flask Architecture ❤️ [@Sirius207](https://github.com/Sirius207)
 
 [Line line-bot-sdk-python](https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo)
+
+[Laptopmedia]https://laptopmedia.com/
+[Top10LaptopUnder700]https://laptopunderbudget.com/best-laptops-under-700-dollars/
+[Top10LaptopUnder500]https://laptopunderbudget.com/best-laptops-under-500-dollars/
