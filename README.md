@@ -24,13 +24,13 @@ There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Sh
 just key in any laptop in the market currently
 it will show its specs and pros and cons
 <p align=center>
-    <img src="img/features/player1.jpg" width="240" height="340">
+    <img src="img/search_laptop.jpg" width="240" height="340">
 </p>
 <p align=center>
-    <img src="img/features/player2.jpg" width="240" height="340">
+    <img src="img/dell_inspiron_5570.jpg" width="240" height="340">
 </p>
 <p align=center>
-    <img src="img/features/player3.jpg" width="240" height="340">
+    <img src="img/dell_more.jpg" width="240" height="340">
 </p>
 
 #### Budget
@@ -39,10 +39,10 @@ There will be 3 different budget friendly prices to choose from
 < $500USD
 < $300USD
 <p align=center>
-    <img src="img/features/team1.jpg" width="240" height="340">
+    <img src="img/budget.jpg" width="240" height="340">
 </p>
 <p align=center>
-    <img src="img/features/team2.jpg" width="240" height="340">
+    <img src="img/budget_1.jpg" width="240" height="340">
 </p>
 
 #### FSM
@@ -57,7 +57,16 @@ There will be 3 different options
 2) Top 7 GPU chips in laptops
 3) Latest Video Review on CPU and GPU in Youtube
 <p align=center>
-    <img src="img/features/schedule.jpg" width="240" height="340">
+    <img src="img/cpu.jpg" width="240" height="340">
+</p>
+<p align=center>
+    <img src="img/cpu_show.jpg" width="240" height="340">
+</p>
+<p align=center>
+    <img src="img/gpu_show.jpg" width="240" height="340">
+</p>
+<p align=center>
+    <img src="img/cpu_gpu_review.jpg" width="240" height="340">
 </p>
 
 ### First timer
