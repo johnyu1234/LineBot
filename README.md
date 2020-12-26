@@ -43,9 +43,6 @@ There will be 3 different budget friendly prices to choose from
 
 #### FSM
 Just allow user to see the fsm for my linechatbot
-<p align=center>
-    <img src="img/features/standings.jpg" width="240" height="340">
-</p>
 
 ### CPU/GPU
 There will be 3 different options
