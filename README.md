@@ -34,9 +34,10 @@ There will be 4 templates including Laptop,CPU,New to buying your own laptop?,Sh
 
 #### Budget
 There will be 3 different budget friendly prices to choose from
-< $700USD
-< $500USD
-< $300USD
+
+* < $700USD
+* < $500USD
+* < $300USD
 <p align=center>
     <img src="img/budget.jpg" width="240" height="340">
 </p>
