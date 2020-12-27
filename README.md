@@ -11,7 +11,7 @@
 
 ## Qr Code
 <p align=center>
-    <img src="img/qr_code.jpg" width="240" height="340">
+    <img src="img/qr_code.PNG" width="240" height="240">
 </p>
 ## Features
 
