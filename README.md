@@ -8,6 +8,11 @@
 *  I have used python's webscraping method(BeautifulSoup) to webscrape all of my data for this project
 *  there are several websites that i have used and their links will be down below in the reference section
 
+
+## Qr Code
+<p align=center>
+    <img src="img/qr_code.jpg" width="240" height="340">
+</p>
 ## Features
 
 ### Initial interface
